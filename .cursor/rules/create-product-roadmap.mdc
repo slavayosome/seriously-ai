@@ -1,0 +1,60 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Rule: Generating a Product Roadmap Document (RMD)
+
+## Goal  
+To guide an AI assistant in creating a clear, actionable Product Roadmap Document (RMD) in Markdown format, synthesising inputs from existing product, system, design, and feature specifications. The roadmap should map work items by implementation area (Backend / Frontend / Design / Infrastructure) and business timeline (Now / Next / Later) so that teams can plan, sequence, and communicate delivery.
+
+## Process  
+1. **Gather Inputs:** The user provides validated artefacts such as the Product Specification Document (PSD), System Specification Document (SSD), Feature Specification Documents (FSDs), and relevant design assets.  
+2. **Ask Clarifying Questions:** Before writing the RMD, the AI *must* ask clarifying questions to capture priorities, resource assumptions, and timeline definitions.  
+3. **Generate RMD:** Using the inputs and answers to the clarifying questions, generate a roadmap with the structure outlined below.  
+4. **Save RMD:** Save the document as `roadmap-[product-name].md` inside the `/specs` directory.
+
+## Clarifying Questions (Examples)  
+The AI should adapt its questions based on context, but here are common areas to explore:
+
+* **Business Phases:** "How do you define *Now*, *Next*, and *Later* for this product?"  
+* **Priority Drivers:** "Which features or modules are most critical for the MVP?"  
+* **Resource Allocation:** "How many developers, designers, and DevOps engineers are available per phase?"  
+* **Time-boxing:** "What is the expected duration for each timeline phase (e.g., weeks 1-6)?"  
+* **Dependencies:** "Are there hard dependencies (e.g., backend before frontend) we must respect?"  
+* **Risk & Complexity:** "Which items carry the highest uncertainty or technical risk?"  
+* **Success Metrics:** "What metrics will indicate that each phase is complete and successful?"  
+* **Budget / Constraints:** "Are there budget ceilings or external deadlines that influence sequencing?"  
+
+## RMD Structure  
+
+1. **Timeline Overview**  
+   - Define what *Now*, *Next*, and *Later* mean in business terms and weeks.  
+
+2. **Feature Lists by Area and Phase**  
+   - **Backend / Frontend / Design / Infrastructure** sections under each timeline bucket.  
+   - Each item should include a short description, rough effort estimate, and noted dependencies.  
+
+3. **Dependencies & Sequencing**  
+   - Identify the critical path, blocking items, and work that can proceed in parallel.  
+
+4. **Resource Planning**  
+   - High-level team allocation, skill requirements, and any notable staffing constraints.  
+
+5. **Success Metrics**  
+   - Define measurable outcomes that signal completion of *Now*, *Next*, and *Later* phases.  
+
+## Target Audience  
+Assume the primary reader of the RMD is a **product manager, tech lead, or delivery manager**. The roadmap must be concise, prioritised, and easy to translate into sprint or project plans.
+
+## Output  
+* **Format:** Markdown (`.md`)  
+* **Location:** `/specs/`  
+* **Filename:** `roadmap-[product-name].md`
+
+## Final Instructions  
+1. Do NOT start generating the RMD immediately.  
+2. Ask clarifying questions to confirm priorities, resources, and timeline definitions.  
+3. Use single-line prompt style for all questions, mirroring the examples above.  
+4. Populate the roadmap with concrete, estimated items and clear dependencies once answers are received.  
+5. Ensure *Now* items deliver the core value proposition, *Next* items drive traction and retention, and *Later* items support scale and differentiation.

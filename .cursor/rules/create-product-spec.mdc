@@ -1,0 +1,94 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Rule: Creating a Product Specification Document (PSD)
+
+## Goal  
+To guide an AI assistant in creating a comprehensive Product Specification Document (PSD) in Markdown format, based on an initial product idea. The PSD should clearly articulate the problem, target audience, solution, and value proposition, and be suitable for informing early product and business strategy decisions.
+
+## Process  
+1. **Receive Initial Prompt:** The user provides a product idea, concept, or a high-level problem statement.  
+2. **Ask Clarifying Questions:** Before writing the PSD, the AI *must* ask clarifying questions to gather sufficient detail. The goal is to deeply understand the **problem**, the **users**, and the **context** before proposing a solution.  
+3. **Generate PSD:** Based on the initial prompt and the user's answers to the clarifying questions, generate a PSD using the structure outlined below.  
+4. **Save PSD:** Save the generated document as `psd-[product-name].md` inside the `/specs` directory.
+
+## Clarifying Questions (Examples)  
+The AI should adapt its questions based on the prompt, but here are some common areas to explore:
+
+* **Problem Discovery:**  
+  - "What specific problem are we trying to solve?"  
+  - "Who experiences this problem most directly?"  
+  - "What are the current workarounds or alternatives?"  
+  - "Why is this problem important to solve now?"
+
+* **Solution Exploration:**  
+  - "What would success look like for the user?"  
+  - "What core functionality would provide the most value?"  
+  - "Are there any technical or business constraints we should know?"
+
+* **Audience & Market:**  
+  - "Who is the primary audience or persona for this product?"  
+  - "What are their key jobs-to-be-done or pain points?"  
+  - "What's the estimated market size or demand?"
+
+* **Business Model & Differentiation:**  
+  - "Who are the main competitors or alternatives?"  
+  - "What makes this product unique or better?"  
+  - "What's the potential business model or monetization plan?"
+
+## PSD Structure  
+The generated PSD should include the following sections:
+
+1. **Executive Summary**  
+   - **Elevator Pitch:** A concise one-paragraph summary of the product.  
+   - **Vision Statement:** A long-term aspirational view of what the product hopes to achieve.
+
+2. **Problem Statement**  
+   - **Current State:** How things work today.  
+   - **Pain Points:** The challenges or frustrations users face.  
+   - **Opportunity Cost:** What users are missing out on without this solution.
+
+3. **Target Audience**  
+   - **Primary Personas:** Describe the key user types, including demographics, workflows, and decision drivers.  
+   - **Market Size:** Estimated reach or number of potential users.
+
+4. **Proposed Solution**  
+   - **Core Concept:** A high-level overview of how the product addresses the problem.  
+   - **Key Features:** The core capabilities the product should include (no implementation details).  
+   - **User Journey:** Describe how users discover, adopt, and benefit from the product.
+
+5. **Unique Selling Proposition (USP)**  
+   - **Differentiation:** What sets this product apart.  
+   - **Competitive Advantage:** Any lasting advantages over alternatives.  
+   - **Positioning Statement:** How the product should be communicated to the market.
+
+6. **Success Metrics**  
+   - **Adoption:** How to measure uptake or reach.  
+   - **Engagement:** How to measure active use and value delivery.  
+   - **Business Impact:** How to measure commercial success.
+
+7. **Constraints & Considerations**  
+   - **Technical Constraints:** Platform, stack, integration dependencies.  
+   - **Business Constraints:** Timeline, budget, or staffing limits.  
+   - **Regulatory Considerations:** Any compliance or legal requirements.
+
+8. **MVP Definition**  
+   - **Core Feature Set:** The minimum capabilities required for launch.  
+   - **Acceptance Criteria:** What makes the MVP “good enough” to release.  
+   - **Out of Scope:** What is intentionally excluded from the initial release.
+
+## Target Audience  
+Assume the primary reader of the PSD is a **product strategist, founder, or early-stage stakeholder**. The content should be clear, structured, and insightful enough to drive further investment, research, or development.
+
+## Output  
+* **Format:** Markdown (`.md`)  
+* **Location:** `/specs/`  
+* **Filename:** `psd-[product-name].md`
+
+## Final Instructions  
+1. Do NOT start generating the PSD immediately.  
+2. Make sure to ask the user clarifying questions first.  
+3. Use the user's answers to generate a structured, high-quality PSD.  
+4. Think like a SaaS founder — prioritize understanding the problem and value, not just documenting a solution.

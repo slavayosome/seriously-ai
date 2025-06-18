@@ -1,0 +1,64 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Rule: Creating a System Specification Document (SSD)
+
+## Goal
+
+To guide an AI assistant in creating a high-level System Specification Document (SSD) in Markdown format, based on a validated product specification. The SSD should describe the overall technical architecture, core modules, data flow, and key technology decisions that define how the system will be built and scaled.
+
+## Process
+
+1. **Reference Product Spec:** The user provides a validated Product Specification Document (PSD) or equivalent context.
+2. **Ask Clarifying Questions:** Before writing the SSD, the AI *must* ask clarifying questions to gather sufficient system-level context. The goal is to define the "how" at the architectural level, not at the feature or implementation detail level.
+3. **Generate SSD:** Based on the user's input and answers to clarifying questions, generate an SSD using the structure outlined below.
+4. **Save SSD:** Save the generated document as `ssd-[system-name].md` inside the `/specs` directory.
+
+## Clarifying Questions (Examples)
+
+The AI should adapt its questions based on the scope, but here are some common areas to explore:
+
+* **Core Capabilities:** "What are the main functionalities or services the system must support?"
+* **User Journeys:** "What key user flows should the system architecture enable?"
+* **Component Separation:** "What are the major components or modules of the system?"
+* **Tech Stack:** "What frontend, backend, database, and infrastructure technologies are preferred or already in use?"
+* **Data Storage:** "What kind of data will the system manage and how should it be stored?"
+* **Integration Needs:** "Are there third-party services or APIs this system needs to communicate with?"
+* **Auth Strategy:** "How will authentication and authorization be handled?"
+* **Deployment & Scaling:** "Where will the system be deployed, and what are the expectations for scale or reliability?"
+* **Team Structure:** "Are there different teams or domains that map to different parts of the architecture?"
+
+## SSD Structure
+
+The generated SSD should include the following sections:
+
+1. **System Overview:** A high-level description of the system, its purpose, and the technical vision.
+2. **Core Modules & Responsibilities:** A breakdown of major components or services and their roles in the system.
+3. **Architecture Diagram (Optional):** A simple diagram or textual representation showing how modules interact.
+4. **Technology Stack:**
+   - **Frontend:** Framework and rationale.
+   - **Backend:** Language/framework and rationale.
+   - **Database:** Chosen storage type and why.
+   - **Infrastructure:** Hosting model, CI/CD, containerization, etc.
+5. **Data Strategy:** Overview of how data is modeled, stored, queried, and managed across the system.
+6. **Authentication & Authorization:** How users are identified, authenticated, and granted access to features or data.
+7. **External Integrations:** APIs, services, or third-party platforms the system depends on.
+8. **Scalability & Deployment:** High-level considerations for performance, environments, traffic growth, and system reliability.
+
+## Target Audience
+
+Assume the primary reader of the SSD is a **technical stakeholder, architect, or engineering lead**. The document should provide a shared understanding of the system’s structure, support early planning, and guide downstream implementation and team alignment.
+
+## Output
+
+* **Format:** Markdown (`.md`)
+* **Location:** `/specs/`
+* **Filename:** `ssd-[system-name].md`
+
+## Final instructions
+
+1. Do NOT start generating the SSD immediately.  
+2. Make sure to ask the user clarifying questions.  
+3. Use the user’s answers to generate a high-level architectural SSD that defines the system structure and technical direction.
