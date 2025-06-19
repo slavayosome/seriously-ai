@@ -6,6 +6,10 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
+    "strict": false,
+    "noImplicitAny": false,
+    "moduleResolution": "node",
     "paths": {
       "@/*": ["./src/*"],
       "@/components/*": ["./src/components/*"],

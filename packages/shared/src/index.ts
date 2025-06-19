@@ -11,6 +11,12 @@ export type {
   Insight,
 } from './types';
 
+// Export database types
+export type { Database } from './types/database';
+
+// Export auth utilities
+export * from './lib/auth';
+
 // Export all utilities
 export {
   formatDate,

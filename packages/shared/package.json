@@ -61,5 +61,8 @@
     "monorepo"
   ],
   "author": "Seriously AI Team",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.50.0"
+  }
 }
