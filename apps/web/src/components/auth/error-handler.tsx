@@ -51,7 +51,7 @@ export function AuthErrorHandler({
     if (!onRetry) return
     setIsRetrying(true)
     try {
-      await onRetry()
+      onRetry()
     } finally {
       setIsRetrying(false)
     }
@@ -61,7 +61,7 @@ export function AuthErrorHandler({
     if (!onResend) return
     setIsResending(true)
     try {
-      await onResend()
+      onResend()
     } finally {
       setIsResending(false)
     }
@@ -140,9 +140,9 @@ export function AuthErrorHandler({
                        {(action.label === retryText && isRetrying) || 
                         (action.label === resendText && isResending) ? (
                          <RefreshCw className="h-3 w-3 mr-1 animate-spin" />
-                       ) : (
-                         action.icon
-                       )}
+                       ) : action.icon ? (
+                         <>{action.icon}</>
+                       ) : null}
                        {action.label}
                      </Button>
                    ))}

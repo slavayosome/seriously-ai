@@ -7,8 +7,17 @@ export interface SessionInfo {
   timeToExpiry: number
   sessionAge: number
   shouldRefresh: boolean
-  user?: any
-  session?: any
+  user?: {
+    id: string
+    email?: string
+    user_metadata?: Record<string, unknown>
+  }
+  session?: {
+    access_token: string
+    refresh_token: string
+    expires_at?: number
+    expires_in: number
+  }
 }
 
 /**
@@ -73,7 +82,12 @@ export async function getSessionInfo(): Promise<SessionInfo> {
 export async function refreshSession(): Promise<{
   success: boolean
   error?: string
-  session?: any
+  session?: {
+    access_token: string
+    refresh_token: string
+    expires_at?: number
+    expires_in: number
+  }
 }> {
   try {
     const supabase = createClient()

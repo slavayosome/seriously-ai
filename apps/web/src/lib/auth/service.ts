@@ -185,7 +185,7 @@ export async function syncUserProfile(): Promise<AuthResult> {
       .single()
 
     // Prepare profile updates from auth metadata
-    const updates: Record<string, any> = {}
+    const updates: Record<string, string | boolean | null> = {}
     
     // Sync display name from auth metadata (Google or user metadata)
     const authDisplayName = user.user_metadata?.full_name || 
@@ -502,7 +502,12 @@ export async function unlinkOAuthAccount(
  */
 export async function getLinkedIdentities(): Promise<{
   success: boolean
-  identities?: any[]
+  identities?: Array<{
+    id: string
+    provider: string
+    created_at?: string
+    identity_data?: Record<string, unknown>
+  }>
   error?: string
 }> {
   try {

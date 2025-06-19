@@ -77,8 +77,6 @@ async function clearServerAuthData(): Promise<void> {
     
     // For Supabase, most of this is handled automatically
     // but we can add custom cleanup here if needed
-    
-    console.log('Server auth data cleanup completed')
   } catch (error) {
     console.warn('Error clearing server auth data:', error)
   }

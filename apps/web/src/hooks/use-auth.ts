@@ -107,7 +107,7 @@ export function useAuth() {
  * Hook for user profile data
  */
 export function useUserProfile() {
-  const [profile, setProfile] = useState<any>(null)
+  const [profile, setProfile] = useState<{ id: string; email?: string; display_name?: string; avatar_url?: string; created_at?: string; updated_at?: string; onboarding_completed?: boolean } | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const { user } = useAuth()

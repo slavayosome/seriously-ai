@@ -9,7 +9,7 @@ import { getCurrentUser, signOut } from '../../src/lib/auth/service'
 import { SessionStatus } from '../../src/components/auth/session-status'
 
 export default function DashboardPage() {
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<{ id: string; email?: string; user_metadata?: Record<string, unknown>; created_at?: string } | null>(null)
   const [loading, setLoading] = useState(true)
   const [signingOut, setSigningOut] = useState(false)
   const { toast } = useToast()

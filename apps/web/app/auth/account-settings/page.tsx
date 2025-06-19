@@ -24,7 +24,7 @@ interface Identity {
 }
 
 export default function AccountSettingsPage() {
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<{ id: string; email?: string; user_metadata?: Record<string, unknown>; created_at?: string } | null>(null)
   const [identities, setIdentities] = useState<Identity[]>([])
   const [loading, setLoading] = useState(true)
   const [linkingGoogle, setLinkingGoogle] = useState(false)
@@ -243,7 +243,7 @@ export default function AccountSettingsPage() {
               </div>
               <div>
                 <label className="text-sm font-medium text-gray-700">Account Created</label>
-                <p className="text-gray-900">{formatDate(user.created_at)}</p>
+                <p className="text-gray-900">{user.created_at ? formatDate(user.created_at) : 'N/A'}</p>
               </div>
             </div>
           </CardContent>

@@ -2,8 +2,8 @@ import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { Database } from '@seriously-ai/shared'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
 if (!supabaseUrl) {
   throw new Error('Missing NEXT_PUBLIC_SUPABASE_URL environment variable')
@@ -21,7 +21,7 @@ export const createClient = async () => {
       get(name: string) {
         return cookieStore.get(name)?.value
       },
-      set(name: string, value: string, options: any) {
+      set(name: string, value: string, options: { maxAge?: number; path?: string; domain?: string; secure?: boolean; sameSite?: 'lax' | 'strict' | 'none' }) {
         try {
           cookieStore.set({ 
             name, 
@@ -39,7 +39,7 @@ export const createClient = async () => {
           // user sessions.
         }
       },
-      remove(name: string, options: any) {
+      remove(name: string, options: { path?: string; domain?: string }) {
         try {
           cookieStore.set({ 
             name, 

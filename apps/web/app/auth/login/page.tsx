@@ -40,9 +40,8 @@ function LoginContent() {
     }
   }, [searchParams, toast])
 
-  const handleSuccess = async (method: 'google' | 'otp', email?: string) => {
+  const handleSuccess = async (method: 'google' | 'otp', _email?: string) => {
     // Handle successful authentication
-    console.log(`Authentication successful via ${method}`, email ? `with email: ${email}` : '')
     
     if (method === 'otp') {
       // For OTP, the user is already authenticated, redirect to dashboard

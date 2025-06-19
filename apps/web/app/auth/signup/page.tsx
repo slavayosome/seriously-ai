@@ -10,9 +10,8 @@ export default function SignupPage() {
   const router = useRouter()
   const { toast } = useToast()
 
-  const handleSuccess = async (method: 'google' | 'otp', email?: string) => {
+  const handleSuccess = async (method: 'google' | 'otp', _email?: string) => {
     // Handle successful authentication
-    console.log(`Account creation successful via ${method}`, email ? `with email: ${email}` : '')
     
     if (method === 'otp') {
       // For OTP, the user is already authenticated, redirect to onboarding or dashboard

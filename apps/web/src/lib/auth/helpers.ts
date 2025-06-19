@@ -65,7 +65,7 @@ export class AuthHelpers {
   /**
    * Get user profile data
    */
-  static async getUserProfile(): Promise<any | null> {
+  static async getUserProfile(): Promise<{ id: string; email?: string; display_name?: string; avatar_url?: string; created_at?: string; updated_at?: string; onboarding_completed?: boolean } | null> {
     try {
       const supabase = createClient()
       const user = await this.getCurrentUser()
@@ -93,7 +93,7 @@ export class AuthHelpers {
   /**
    * Update user profile
    */
-  static async updateUserProfile(updates: Record<string, any>): Promise<AuthResult> {
+  static async updateUserProfile(updates: Record<string, string | boolean | null>): Promise<AuthResult> {
     try {
       const supabase = createClient()
       const user = await this.getCurrentUser()
@@ -249,7 +249,7 @@ export class ServerAuthHelpers {
   /**
    * Get user profile data (server-side)
    */
-  static async getUserProfile(): Promise<any | null> {
+  static async getUserProfile(): Promise<{ id: string; email?: string; display_name?: string; avatar_url?: string; created_at?: string; updated_at?: string; onboarding_completed?: boolean } | null> {
     try {
       const supabase = await createServerClient()
       const user = await this.getCurrentUser()
