@@ -1,9 +1,9 @@
 ## Relevant Files
 
-- `packages/database/schema.sql` - Main database schema definition with all tables and RLS policies
-- `packages/database/seed.sql` - Seed script for initial data and development testing
-- `packages/shared/src/types/database.ts` - TypeScript types generated from Supabase schema
-- `packages/database/migrations/` - Database migration files for version control
+- `supabase/migrations/20241220000000_initial_schema_with_rls.sql` - Main database schema with RLS policies ✅ **DEPLOYED**
+- `supabase/seed.sql` - Seed script for initial data and development testing
+- `packages/shared/src/types/database.ts` - TypeScript types generated from Supabase schema ✅ **GENERATED**
+- `supabase/config.toml` - Supabase project configuration
 - `apps/web/app/auth/` - Authentication pages and components
 - `apps/web/middleware.ts` - Next.js middleware for route protection
 - `apps/web/src/lib/supabase/client.ts` - Supabase client configuration
@@ -28,6 +28,7 @@
 - `apps/web/src/lib/auth/service.ts` - Enhanced with syncUserProfile function and improved Google OAuth with profile sync
 - `apps/web/app/auth/callback/page.tsx` - Enhanced to sync user profile after OAuth authentication
 - `apps/web/src/lib/redis/credit-cache.ts` - Redis caching for credit balance (to be created)
+- `supabase/RLS-POLICIES.md` - Complete documentation of all RLS policies, access patterns, and security guidelines
 
 ### Notes
 
@@ -57,16 +58,16 @@
   - [x] 2.9 Add error handling with user-friendly messages and resend options
   - [x] 2.10 Create user profile creation/update hooks on auth events
 
-- [ ] 3.0 Configure Row Level Security (RLS) Policies
-  - [ ] 3.1 Enable RLS on all tables (user_profiles, credit_wallet, credit_transactions, research_reports, insights, drafts)
-  - [ ] 3.2 Create SELECT policies restricting users to their own data
-  - [ ] 3.3 Create INSERT policies for user-owned records
-  - [ ] 3.4 Create UPDATE policies for user modifications
-  - [ ] 3.5 Create DELETE policies where applicable
-  - [ ] 3.6 Configure service role bypass for background jobs
-  - [ ] 3.7 Create read-only policy for credit_transactions
-  - [ ] 3.8 Write RLS policy tests to verify data isolation
-  - [ ] 3.9 Document RLS policies and access patterns
+- [x] 3.0 Configure Row Level Security (RLS) Policies
+  - [x] 3.1 Enable RLS on all tables (user_profiles, credit_wallet, credit_transactions, research_reports, insights, drafts)
+  - [x] 3.2 Create SELECT policies restricting users to their own data
+  - [x] 3.3 Create INSERT policies for user-owned records
+  - [x] 3.4 Create UPDATE policies for user modifications
+  - [x] 3.5 Create DELETE policies where applicable
+  - [x] 3.6 Configure service role bypass for background jobs
+  - [x] 3.7 Create read-only policy for credit_transactions
+  - [x] 3.8 Write RLS policy tests to verify data isolation
+  - [x] 3.9 Document RLS policies and access patterns
 
 - [ ] 4.0 Build Protected Route Middleware
   - [ ] 4.1 Create Next.js middleware.ts file with Supabase session validation
