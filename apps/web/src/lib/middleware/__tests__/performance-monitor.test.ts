@@ -3,7 +3,7 @@
  * Tests for middleware performance monitoring functionality
  */
 
-import { PerformanceMonitor, MetricType, AlertLevel } from '../performance-monitor'
+import { AlertLevel, MetricType, PerformanceMonitor } from '../performance-monitor'
 import { ProtectionLevel } from '../route-config'
 import { ErrorCategory } from '../error-handler'
 

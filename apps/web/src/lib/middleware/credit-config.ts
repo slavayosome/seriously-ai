@@ -185,7 +185,7 @@ export class CreditConfig {
       if (pathname.includes('/api/ai')) return 'default'
       
       // Handle dynamic pipeline API routes
-      const pipelineMatch = pathname.match(/\/api\/pipeline\/([^\/]+)/)
+      const pipelineMatch = pathname.match(/\/api\/pipeline\/([^/]+)/)
       if (pipelineMatch) {
         const pipelineId = pipelineMatch[1]
         return `pipeline:${pipelineId}` as CreditOperation
@@ -217,7 +217,7 @@ export class CreditConfig {
     }
     
     // Handle dynamic pipeline UI routes
-    const pipelineUIMatch = pathname.match(/\/pipeline\/([^\/]+)/)
+    const pipelineUIMatch = pathname.match(/\/pipeline\/([^/]+)/)
     if (pipelineUIMatch) {
       const pipelineId = pipelineUIMatch[1]
       return `pipeline:${pipelineId}` as CreditOperation

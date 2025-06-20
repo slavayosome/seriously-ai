@@ -14,8 +14,13 @@ export async function initializeMiddleware(): Promise<void> {
     // Initialize credit configuration system
     await initializeCreditConfig()
     
-    console.log('✅ Middleware systems initialized successfully')
+    // Middleware systems initialized successfully (console disabled for production)
+    if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.log('✅ Middleware systems initialized successfully')
+    }
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('❌ Failed to initialize middleware systems:', error)
     // Don't throw - allow app to continue with default configurations
   }

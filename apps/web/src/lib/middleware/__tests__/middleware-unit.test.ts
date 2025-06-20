@@ -6,7 +6,7 @@
 import { ProtectionLevel, RouteProtectionMatcher } from '../route-config'
 import { RedirectReason } from '../redirect-handler'
 import { ErrorCategory } from '../error-handler'
-import { PlanTier, FeatureCategory, PlanAccessChecker } from '../plan-access-checker'
+import { FeatureCategory, PlanAccessChecker, PlanTier } from '../plan-access-checker'
 
 describe('Middleware Unit Tests', () => {
   describe('RouteProtectionMatcher', () => {

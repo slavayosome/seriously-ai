@@ -98,12 +98,12 @@ export const FEATURE_URL_PATTERNS: Record<FeatureCategory, RegExp[]> = {
   // Research patterns
   [FeatureCategory.RESEARCH_BASIC]: [
     /^\/research$/,
-    /^\/research\/[^\/]+$/,
+    /^\/research\/[^/]+$/,
     /^\/api\/research\/basic/
   ],
   [FeatureCategory.RESEARCH_ADVANCED]: [
     /^\/research\/advanced/,
-    /^\/research\/[^\/]+\/analyze/,
+    /^\/research\/[^/]+\/analyze/,
     /^\/api\/research\/advanced/
   ],
   [FeatureCategory.RESEARCH_BULK]: [
@@ -114,12 +114,12 @@ export const FEATURE_URL_PATTERNS: Record<FeatureCategory, RegExp[]> = {
   // Insights patterns
   [FeatureCategory.INSIGHTS_BASIC]: [
     /^\/insights$/,
-    /^\/insights\/[^\/]+$/,
+    /^\/insights\/[^/]+$/,
     /^\/api\/insights\/basic/
   ],
   [FeatureCategory.INSIGHTS_ADVANCED]: [
     /^\/insights\/advanced/,
-    /^\/insights\/[^\/]+\/enhance/,
+    /^\/insights\/[^/]+\/enhance/,
     /^\/api\/insights\/advanced/
   ],
   [FeatureCategory.INSIGHTS_BULK]: [
@@ -130,7 +130,7 @@ export const FEATURE_URL_PATTERNS: Record<FeatureCategory, RegExp[]> = {
   // Draft patterns
   [FeatureCategory.DRAFTS_BASIC]: [
     /^\/drafts$/,
-    /^\/drafts\/[^\/]+$/,
+    /^\/drafts\/[^/]+$/,
     /^\/generate$/,
     /^\/api\/drafts\/basic/
   ],
@@ -141,7 +141,7 @@ export const FEATURE_URL_PATTERNS: Record<FeatureCategory, RegExp[]> = {
   ],
   [FeatureCategory.DRAFTS_TEMPLATES]: [
     /^\/templates/,
-    /^\/drafts\/[^\/]+\/template/,
+    /^\/drafts\/[^/]+\/template/,
     /^\/api\/templates/
   ],
   
@@ -153,7 +153,7 @@ export const FEATURE_URL_PATTERNS: Record<FeatureCategory, RegExp[]> = {
   ],
   [FeatureCategory.PIPELINE_CUSTOM]: [
     /^\/pipeline\/custom/,
-    /^\/pipeline\/[^\/]+\/customize/,
+    /^\/pipeline\/[^/]+\/customize/,
     /^\/api\/pipeline\/custom/
   ],
   [FeatureCategory.PIPELINE_BATCH]: [
@@ -172,15 +172,15 @@ export const FEATURE_URL_PATTERNS: Record<FeatureCategory, RegExp[]> = {
   // Sharing patterns
   [FeatureCategory.SHARING_ADVANCED]: [
     /^\/api\/share\/advanced/,
-    /^\/share\/[^\/]+\/collaborate/
+    /^\/share\/[^/]+\/collaborate/
   ],
   
   // API patterns
   [FeatureCategory.API_BASIC]: [
-    /^\/api\/(research|insights|drafts)\/[^\/]+$/
+    /^\/api\/(research|insights|drafts)\/[^/]+$/
   ],
   [FeatureCategory.API_ADVANCED]: [
-    /^\/api\/(research|insights|drafts)\/[^\/]+\/advanced/
+    /^\/api\/(research|insights|drafts)\/[^/]+\/advanced/
   ],
   [FeatureCategory.API_BULK]: [
     /^\/api\/(research|insights|drafts)\/bulk/
@@ -297,6 +297,8 @@ export class PlanAccessChecker {
     if (cached && Date.now() - cached.timestamp < this.CACHE_TTL) {
       // Record cache hit
       try {
+        // Dynamic import to avoid circular dependencies
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
         const { PerformanceMonitor } = require('./performance-monitor')
         PerformanceMonitor.recordCacheHit('plan', true)
       } catch {
@@ -307,6 +309,8 @@ export class PlanAccessChecker {
     
     // Record cache miss
     try {
+      // Dynamic import to avoid circular dependencies
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
       const { PerformanceMonitor } = require('./performance-monitor')
       PerformanceMonitor.recordCacheHit('plan', false)
     } catch {

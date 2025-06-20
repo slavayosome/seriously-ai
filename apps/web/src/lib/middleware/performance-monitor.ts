@@ -97,7 +97,11 @@ export class PerformanceMonitor {
   static initialize(): void {
     // Start periodic cleanup and reporting
     this.startPeriodicTasks()
-    console.info('Performance monitoring initialized')
+    // Performance monitoring initialized (console disabled for production)
+    if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.info('Performance monitoring initialized')
+    }
   }
 
   /**
@@ -410,6 +414,7 @@ export class PerformanceMonitor {
     const logMethod = level === AlertLevel.CRITICAL ? console.error : 
                      level === AlertLevel.WARNING ? console.warn : console.info
     
+    // eslint-disable-next-line no-console
     logMethod(`Performance Alert [${level.toUpperCase()}]: ${message}`)
   }
 
@@ -433,7 +438,8 @@ export class PerformanceMonitor {
 
   private static getRouteCacheSize(): number {
     try {
-      // This would need to be integrated with RouteProtectionMatcher
+      // Dynamic import to avoid circular dependencies
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
       const { RouteProtectionMatcher } = require('./route-config')
       return RouteProtectionMatcher.getCacheStats().size
     } catch {
@@ -443,7 +449,8 @@ export class PerformanceMonitor {
 
   private static getPlanCacheSize(): number {
     try {
-      // This would need to be integrated with PlanAccessChecker
+      // Dynamic import to avoid circular dependencies
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
       const { PlanAccessChecker } = require('./plan-access-checker')
       return PlanAccessChecker.getPlanCacheStats().size
     } catch {

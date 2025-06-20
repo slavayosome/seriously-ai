@@ -224,6 +224,8 @@ export class RouteProtectionMatcher {
     if (cached !== undefined) {
       // Record cache hit
       try {
+        // Dynamic import to avoid circular dependencies
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
         const { PerformanceMonitor } = require('./performance-monitor')
         PerformanceMonitor.recordCacheHit('route', true)
       } catch {
@@ -234,6 +236,8 @@ export class RouteProtectionMatcher {
     
     // Record cache miss
     try {
+      // Dynamic import to avoid circular dependencies
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
       const { PerformanceMonitor } = require('./performance-monitor')
       PerformanceMonitor.recordCacheHit('route', false)
     } catch {

@@ -1,6 +1,6 @@
 import { Database } from '@seriously-ai/shared'
 import { createServerClient } from '@supabase/ssr'
-import { CreditConfig, getCreditCost, type CreditOperation } from './credit-config'
+import { type CreditOperation, getCreditCost } from './credit-config'
 
 /**
  * Credit check results with detailed information

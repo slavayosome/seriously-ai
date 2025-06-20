@@ -3,7 +3,7 @@
  * Comprehensive error handling with proper HTTP status codes and graceful fallbacks
  */
 
-import { NextResponse, type NextRequest } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 import { RedirectHandler, RedirectReason } from './redirect-handler'
 import { ProtectionLevel } from './route-config'
 
@@ -263,7 +263,7 @@ export class MiddlewareErrorHandler {
     switch (error.category) {
       case ErrorCategory.AUTH_SESSION_INVALID:
       case ErrorCategory.AUTH_SESSION_EXPIRED:
-      case ErrorCategory.AUTH_TOKEN_MALFORMED:
+      case ErrorCategory.AUTH_TOKEN_MALFORMED: {
         const reason = error.category === ErrorCategory.AUTH_SESSION_EXPIRED 
           ? RedirectReason.SESSION_EXPIRED 
           : RedirectReason.UNAUTHENTICATED
@@ -274,6 +274,7 @@ export class MiddlewareErrorHandler {
           pathname,
           reason
         )
+      }
       
       case ErrorCategory.PLAN_UPGRADE_REQUIRED:
         return RedirectHandler.handlePlanUpgradeRequired(
@@ -406,12 +407,15 @@ export class MiddlewareErrorHandler {
     
     switch (config.logLevel) {
       case 'error':
+        // eslint-disable-next-line no-console
         console.error('Middleware Error:', logData)
         break
       case 'warn':
+        // eslint-disable-next-line no-console
         console.warn('Middleware Warning:', logData)
         break
       case 'info':
+        // eslint-disable-next-line no-console
         console.info('Middleware Info:', logData)
         break
     }
@@ -427,6 +431,7 @@ export class MiddlewareErrorHandler {
    */
   private static logCriticalError(error: MiddlewareError, pathname: string): void {
     // TODO: Integrate with external monitoring service (Sentry, DataDog, etc.)
+    // eslint-disable-next-line no-console
     console.error('CRITICAL MIDDLEWARE ERROR:', {
       category: error.category,
       message: error.message,

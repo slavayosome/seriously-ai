@@ -4,7 +4,7 @@
  */
 
 import { NextRequest } from 'next/server'
-import { PerformanceMonitor, MetricType } from '../../../../src/lib/middleware/performance-monitor'
+import { MetricType, PerformanceMonitor } from '../../../../src/lib/middleware/performance-monitor'
 
 /**
  * GET /api/monitoring/performance
