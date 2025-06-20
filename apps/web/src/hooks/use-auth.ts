@@ -104,6 +104,28 @@ export function useAuth() {
 }
 
 /**
+ * Hook for authentication loading state
+ */
+export function useAuthLoading() {
+  const { loading } = useAuth()
+  return loading
+}
+
+/**
+ * Hook for requiring authentication
+ */
+export function useRequireAuth() {
+  const { user, loading, error } = useAuth()
+  
+  return {
+    authenticated: !!user,
+    loading,
+    error,
+    shouldRedirect: !loading && !user,
+  }
+}
+
+/**
  * Hook for user profile data
  */
 export function useUserProfile() {
